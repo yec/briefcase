@@ -1,0 +1,9 @@
+<?php
+
+function briefcase_block_info() {
+
+}
+
+function briefcase_block_view($delta = '') {
+
+}

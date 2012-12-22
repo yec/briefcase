@@ -1,0 +1,3 @@
+name = Briefcase
+description = Add pages to a briefcase that can be downloaded as a pdf.
+core = 7.x
