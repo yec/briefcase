@@ -1,9 +1,53 @@
 <?php
 
-function briefcase_block_info() {
+/**
+ * Implement hooks
+ */
 
+function briefcase_menu() {
+    $menu['briefcase'] = array(
+        'title' => 'Briefcase',
+        'description' => 'View briefcase items',
+        'access callback' => true,
+        'page callback' => 'briefcase_page',
+    );
+    return $menu;
+}
+
+function briefcase_block_info() {
+    $blocks['briefcase'] = array(
+        'info' => t('Briefcase block')
+    );
+    $blocks['briefcase link'] = array(
+        'info' => t('Briefcase link')
+    );
+    return $blocks;
+}
+
+function briefcase_block_configure($delta = '') {
+    $form = array();
+    return $form;
 }
 
 function briefcase_block_view($delta = '') {
+    $block = array();
 
+    dpm($delta);
+    $block['subject'] = null;
+    $block['content'] = 'hello world';
+
+    return $block;
 }
+
+/**
+ * Page callbacks
+ */
+function briefcase_page() {
+    drupal_session_start();
+
+    return print_r($_SESSION, 1);
+}
+
+/**
+ * User defined
+ */
