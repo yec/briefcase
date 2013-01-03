@@ -43,11 +43,29 @@ function briefcase_block_view($delta = '') {
  * Page callbacks
  */
 function briefcase_page() {
-    drupal_session_start();
-
-    return print_r($_SESSION, 1);
+		$page = array();
+		$page['container_prefix'] = array(
+			'#prefix' => "<div id='dsa'>",
+		);
+		$page['form'] = drupal_get_form('briefcase_download_form');
+		$page['container_suffix'] = array(
+			'#suffix' => "</div>",
+		);
+		return $page;
 }
 
-/**
- * User defined
- */
+function briefcase_download_form() {
+	$form['pdf_'] = array(
+		'#type' => 'checkbox',
+		'#title' => t('PDF or property title'),
+	);
+	$form['submit'] = array(
+		'#type'	=> 'submit',
+		'#value' => t('Save'),
+	);
+	return $form;
+}
+
+function briefcase_download_form_submit( $form_id, $form_values ) {
+	drupal_set_message( t( $messsage ) );
+}
